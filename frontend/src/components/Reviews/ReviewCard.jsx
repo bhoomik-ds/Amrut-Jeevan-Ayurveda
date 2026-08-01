@@ -1,17 +1,43 @@
 function ReviewCard({ stars, review, name, city }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm hover:shadow-lg transition">
-      <div className="text-yellow-500 text-lg mb-3">
-        {"★".repeat(stars)}
+    <div className="rounded-2xl bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+
+      {/* Header */}
+      <div className="flex items-start justify-between">
+
+        {/* Left Side */}
+        <div className="flex items-center gap-4">
+
+          {/* Avatar */}
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#4F8EF7] text-2xl text-white">
+            👤
+          </div>
+
+          {/* Name */}
+          <div>
+            <h3 className="text-lg font-semibold text-[#16332B]">
+              {name}
+            </h3>
+
+            <p className="text-sm text-gray-500">
+              @{city.toLowerCase().replace(/\s+/g, "")}
+            </p>
+          </div>
+
+        </div>
+
+        {/* Stars */}
+        <div className="text-lg text-yellow-400">
+          {"★".repeat(stars)}
+        </div>
+
       </div>
 
-      <p className="text-gray-600 leading-7 mb-5">
-        "{review}"
+      {/* Review */}
+      <p className="mt-6 text-[15px] leading-8 text-gray-600">
+        {review}
       </p>
 
-      <h4 className="font-bold text-[#16332B]">
-        {name}, {city}
-      </h4>
     </div>
   );
 }
