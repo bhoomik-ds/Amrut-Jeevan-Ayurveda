@@ -3,16 +3,16 @@ import StepCard from "./StepCard";
 const steps = [
   {
     step: "01",
-    title: "Herbal Capsules",
+    title: "हर्बल कैप्सूल",
     description:
-      "Take one capsule after breakfast and dinner. It helps balance stomach acid and improves digestion."
+      "रोज़ सुबह नाश्ते के बाद और रात के भोजन के बाद 1-1 कैप्सूल लें। यह मुँह की जकड़न, दर्द और सूजन को कम करने में सहायक है।",
   },
   {
     step: "02",
-    title: "Herbal Powder",
+    title: "हर्बल लिक्विड",
     description:
-      "Take the herbal powder with warm water before sleeping. It helps clean the digestive system and reduces bloating."
-  }
+      "दिए गए निर्देशानुसार हर्बल लिक्विड का नियमित उपयोग करें। यह गालों के लचीलेपन को बेहतर बनाने और मुँह खोलने की क्षमता में सुधार करने में सहायता करता है।",
+  },
 ];
 
 function Process() {
@@ -23,21 +23,27 @@ function Process() {
     >
       <div className="mx-auto max-w-7xl px-6">
 
+        {/* Section Heading */}
+
         <div className="mb-14 text-center">
 
           <p className="font-semibold uppercase tracking-widest text-yellow-400">
-            How It Works
+            उपयोग करने की विधि
           </p>
 
           <h2 className="mt-4 text-4xl font-bold text-white">
-            2-Step Ayurvedic Treatment
+            2-स्टेप आयुर्वेदिक उपचार
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-gray-300">
-            A simple two-step routine that supports digestion and helps reduce acidity naturally.
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-300">
+            कैप्सूल और हर्बल लिक्विड का यह आसान 2-स्टेप रूटीन
+            मुँह की जकड़न (OSMF), दर्द और सूजन से राहत देने तथा
+            मुँह खोलने की क्षमता को बेहतर बनाने में सहायक है।
           </p>
 
         </div>
+
+        {/* Steps */}
 
         <div className="grid gap-8 md:grid-cols-2">
 

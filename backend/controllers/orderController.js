@@ -5,9 +5,9 @@ import Order from "../models/Order.js";
 // ============================
 export const createOrder = async (req, res) => {
   try {
-    const { name, phone } = req.body;
+    const { name, phone, city } = req.body;
 
-    if (!name || !phone) {
+    if (!name || !phone || !city) {
       return res.status(400).json({
         success: false,
         message: "All fields are required.",
@@ -17,6 +17,7 @@ export const createOrder = async (req, res) => {
     const order = await Order.create({
       name,
       phone,
+      city,
     });
 
     res.status(201).json({

@@ -6,8 +6,10 @@ function OrderForm() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    city: "",
   });
 
+  const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
   const handleChange = (e) => {
@@ -17,39 +19,49 @@ function OrderForm() {
     });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await createOrder(formData);
+    // Phone Validation
+    if (!/^[6-9]\d{9}$/.test(formData.phone)) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
 
-    console.log("Order Created:", response);
+    try {
+      setLoading(true);
 
-    setOpenModal(true);
+      const response = await createOrder(formData);
 
-    // Clear the form
-    setFormData({
-      name: "",
-      phone: "",
-    });
+      console.log("Order Created:", response);
 
-  } catch (error) {
-    console.error("Error:", error);
+      setOpenModal(true);
 
-    alert("Failed to place order.");
-  }
-};
+      setFormData({
+        name: "",
+        phone: "",
+        city: "",
+      });
+    } catch (error) {
+      console.error(error);
+
+      alert(
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to place order."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-5"
-      >
-        {/* Full Name */}
+      <form onSubmit={handleSubmit} className="space-y-5">
 
+        {/* Full Name */}
         <div>
-          <label className="mb-2 block font-medium">
+          <label className="mb-2 block font-medium text-[#16332B]">
             Full Name
           </label>
 
@@ -58,17 +70,16 @@ const handleSubmit = async (e) => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Enter Full Name"
+            placeholder="e.g. Rahul Sharma"
             required
-            className="w-full rounded-lg border p-3 outline-none focus:border-green-700"
+            className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-[#16332B] focus:ring-2 focus:ring-green-200"
           />
         </div>
 
         {/* Phone */}
-
         <div>
-          <label className="mb-2 block font-medium">
-            Phone Number
+          <label className="mb-2 block font-medium text-[#16332B]">
+            Mobile Number
           </label>
 
           <input
@@ -76,23 +87,45 @@ const handleSubmit = async (e) => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="+91XXXXXXXXXX"
+            placeholder="9876543210"
+            maxLength={10}
             required
-            className="w-full rounded-lg border p-3 outline-none focus:border-green-700"
+            className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-[#16332B] focus:ring-2 focus:ring-green-200"
           />
         </div>
 
-        {/* Button */}
+        {/* City */}
+        <div>
+          <label className="mb-2 block font-medium text-[#16332B]">
+            City
+          </label>
 
+          <input
+            type="text"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            placeholder="Ahmedabad"
+            required
+            className="w-full rounded-xl border border-gray-300 p-3 outline-none transition focus:border-[#16332B] focus:ring-2 focus:ring-green-200"
+          />
+        </div>
+
+        {/* Submit Button */}
         <button
           type="submit"
-          className="w-full rounded-lg bg-[#8C2F39] py-4 font-semibold text-white transition hover:bg-[#722730]"
+          disabled={loading}
+          className="w-full rounded-xl bg-[#8C2F39] py-4 text-lg font-semibold text-white transition hover:bg-[#722730] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          Order Now
+          {loading ? "Submitting..." : "Order Now"}
         </button>
-      </form>
 
-      {/* Thank You Modal */}
+        {/* Trust Text */}
+        <p className="text-center text-xs text-gray-500">
+          🔒 Your information is 100% secure and will only be used to contact you about your order.
+        </p>
+
+      </form>
 
       <ThankYouModal
         isOpen={openModal}

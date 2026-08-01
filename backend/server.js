@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDB from "./config/db.js";
 import orderRoutes from "./routes/orderRoutes.js";
 
@@ -12,7 +13,8 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(express.json()); // <-- Required to parse JSON requests
+app.use(cors());          // ✅ Enable CORS
+app.use(express.json());  // ✅ Parse JSON
 
 // Routes
 app.use("/api/orders", orderRoutes);
