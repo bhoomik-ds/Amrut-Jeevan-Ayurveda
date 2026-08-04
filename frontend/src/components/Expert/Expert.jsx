@@ -43,7 +43,7 @@ function Expert() {
               loop
               playsInline
               preload="metadata"
-              className="w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] rounded-3xl object-cover"
+              className="w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[550px] rounded-3xl object-cover"
             >
               <source src={expertVideo} type="video/webm" />
               Your browser does not support the video tag.
