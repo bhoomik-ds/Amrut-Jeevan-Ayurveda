@@ -1,4 +1,5 @@
 import { BadgeCheck, Leaf } from "lucide-react";
+import expertVideo from "../../assets/expert.webm";
 
 function Expert() {
   return (
@@ -20,7 +21,7 @@ function Expert() {
             आयुर्वेद विशेषज्ञों द्वारा अनुशंसित
           </h2>
 
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg leading-8 text-gray-600">
             पारंपरिक आयुर्वेदिक सिद्धांतों पर आधारित विशेष हर्बल फ़ॉर्मूला,
             जो मुँह की जकड़न (OSMF), दर्द और सूजन से राहत देने में सहायक है।
           </p>
@@ -29,15 +30,26 @@ function Expert() {
 
         {/* Expert Card */}
 
-        <div className="grid items-center gap-10 rounded-3xl border border-[#E8E8E8] bg-white p-10 shadow-xl md:grid-cols-[170px_1fr]">
+        <div className="grid items-center gap-12 rounded-3xl border border-[#E8E8E8] bg-white p-8 shadow-2xl lg:grid-cols-[420px_1fr]">
 
-          {/* Expert Image */}
+          {/* Expert Video */}
 
-          <img
-            src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=400&auto=format&fit=crop"
-            alt="Ayurvedic Expert"
-            className="mx-auto h-40 w-40 rounded-full object-cover shadow-lg"
-          />
+          <div  className="mx-auto w-full max-w-full sm:max-w-[500px] lg:max-w-[550px] overflow-hidden rounded-3xl shadow-xl">
+
+            <video
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] rounded-3xl object-cover"
+            >
+              <source src={expertVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+
+          </div>
 
           {/* Content */}
 
@@ -63,7 +75,7 @@ function Expert() {
                 आयुर्वेद वेलनेस टीम
               </h3>
 
-              <p className="mt-1 text-gray-500">
+              <p className="mt-2 text-gray-500">
                 पारंपरिक आयुर्वेदिक स्वास्थ्य मार्गदर्शन
               </p>
 
@@ -71,21 +83,27 @@ function Expert() {
 
             {/* Highlights */}
 
-            <div className="mt-8 flex flex-wrap gap-5">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3 rounded-xl bg-[#F8FAF8] p-4">
                 <Leaf className="text-green-700" />
-                <span>100% प्राकृतिक जड़ी-बूटियाँ</span>
+                <span className="font-medium">
+                  100% प्राकृतिक जड़ी-बूटियाँ
+                </span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3 rounded-xl bg-[#F8FAF8] p-4">
                 <Leaf className="text-green-700" />
-                <span>डबल-एक्शन आयुर्वेदिक फ़ॉर्मूला</span>
+                <span className="font-medium">
+                  डबल-एक्शन आयुर्वेदिक फ़ॉर्मूला
+                </span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3 rounded-xl bg-[#F8FAF8] p-4 sm:col-span-2">
                 <Leaf className="text-green-700" />
-                <span>मुँह की जकड़न (OSMF) में सहायक</span>
+                <span className="font-medium">
+                  मुँह की जकड़न (OSMF) में सहायक
+                </span>
               </div>
 
             </div>

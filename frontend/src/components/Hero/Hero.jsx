@@ -54,15 +54,15 @@ function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
 
             <span className="text-5xl font-bold text-[#8C2F39]">
-              ₹899
-            </span>
-
-            <span className="text-2xl text-gray-400 line-through">
               ₹1499
             </span>
 
+            <span className="text-2xl text-gray-400 line-through">
+              ₹2999
+            </span>
+
             <span className="rounded-full bg-green-100 px-4 py-2 text-sm font-bold text-green-700">
-              ₹600 की बचत
+              ₹1500 की बचत
             </span>
 
           </div>
@@ -145,7 +145,7 @@ function Hero() {
               </p>
 
               <p className="text-2xl font-bold">
-                ₹899
+                ₹1499
               </p>
 
             </div>
