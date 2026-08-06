@@ -1,4 +1,12 @@
 import { useState } from "react";
+import {
+  User,
+  MapPin,
+  MessageSquare,
+  Send,
+  ShieldCheck,
+  Star,
+} from "lucide-react";
 
 function Feedback() {
   const [rating, setRating] = useState(0);
@@ -15,108 +23,134 @@ function Feedback() {
   return (
     <section
       id="feedback"
-      className="py-20 bg-[#FBF8F2]"
+      className="bg-gradient-to-b from-[#FBF8F2] to-white py-24"
     >
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="mx-auto max-w-5xl px-6">
 
         {/* Heading */}
 
-        <div className="text-center mb-12">
+        <div className="mb-14 text-center">
 
-          <p className="text-[#8C2F39] uppercase tracking-widest text-sm font-semibold">
-            आपकी प्रतिक्रिया
-          </p>
+          <span className="rounded-full bg-[#16332B]/10 px-5 py-2 text-sm font-semibold text-[#16332B]">
+            ⭐ आपकी प्रतिक्रिया
+          </span>
 
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-[#16332B]">
+          <h2 className="mt-5 text-4xl font-bold text-[#16332B]">
             अपना अनुभव साझा करें
           </h2>
 
-          <p className="mt-4 text-gray-600">
-            हमारे उत्पाद का उपयोग करने के बाद अपना अनुभव साझा करें।
-            आपकी प्रतिक्रिया हमारे लिए बहुत महत्वपूर्ण है।
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-gray-600">
+            आपके अनुभव से अन्य लोगों को सही निर्णय लेने में सहायता मिलेगी।
           </p>
 
         </div>
 
-        {/* Form */}
+        {/* Card */}
 
-        <div className="bg-[#F2E9D8] rounded-3xl p-8 md:p-10">
+        <div className="rounded-[32px] border border-[#ECE7DD] bg-white p-8 shadow-2xl md:p-12">
 
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-7"
+          >
 
             {/* Name */}
 
-            <div className="mb-5">
+            <div>
 
-              <label className="block mb-2 font-medium text-gray-700">
+              <label className="mb-3 flex items-center gap-2 font-semibold text-[#16332B]">
+
+                <User size={18} />
+
                 आपका नाम
+
               </label>
 
               <input
                 type="text"
-                placeholder="अपना नाम दर्ज करें"
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#E8A33D]"
+                placeholder="अपना पूरा नाम दर्ज करें"
+                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 transition focus:border-[#16332B] focus:bg-white focus:outline-none"
               />
 
             </div>
 
             {/* City */}
 
-            <div className="mb-5">
+            <div>
 
-              <label className="block mb-2 font-medium text-gray-700">
+              <label className="mb-3 flex items-center gap-2 font-semibold text-[#16332B]">
+
+                <MapPin size={18} />
+
                 आपका शहर
+
               </label>
 
               <input
                 type="text"
                 placeholder="अपना शहर दर्ज करें"
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#E8A33D]"
+                className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 transition focus:border-[#16332B] focus:bg-white focus:outline-none"
               />
 
             </div>
 
             {/* Rating */}
 
-            <div className="mb-5">
+            <div>
 
-              <label className="block mb-3 font-medium text-gray-700">
+              <label className="mb-4 font-semibold text-[#16332B] block">
                 अपनी रेटिंग दें
               </label>
 
-              <div className="flex gap-2 text-3xl">
+              <div className="flex gap-3">
 
                 {[1, 2, 3, 4, 5].map((star) => (
+
                   <button
-                    type="button"
                     key={star}
+                    type="button"
                     onClick={() => setRating(star)}
-                    className={`${
-                      star <= rating
-                        ? "text-yellow-500"
-                        : "text-gray-300"
-                    }`}
+                    className="transition hover:scale-125"
                   >
-                    ★
+
+                    <Star
+                      size={34}
+                      fill={
+                        star <= rating
+                          ? "#FACC15"
+                          : "transparent"
+                      }
+                      className={
+                        star <= rating
+                          ? "text-yellow-400"
+                          : "text-gray-300"
+                      }
+                    />
+
                   </button>
+
                 ))}
 
               </div>
 
             </div>
 
-            {/* Experience */}
+            {/* Review */}
 
-            <div className="mb-6">
+            <div>
 
-              <label className="block mb-2 font-medium text-gray-700">
-                अपना अनुभव लिखें
+              <label className="mb-3 flex items-center gap-2 font-semibold text-[#16332B]">
+
+                <MessageSquare size={18} />
+
+                अपना अनुभव
+
               </label>
 
               <textarea
                 rows="5"
                 placeholder="अपने अनुभव के बारे में लिखें..."
-                className="w-full resize-none rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#E8A33D]"
+                className="w-full resize-none rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 transition focus:border-[#16332B] focus:bg-white focus:outline-none"
               />
 
             </div>
@@ -125,12 +159,32 @@ function Feedback() {
 
             <button
               type="submit"
-              className="w-full rounded-xl bg-[#8C2F39] py-4 font-semibold text-white transition hover:bg-[#742730]"
+              className="flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-[#8C2F39] to-[#A83D48] py-4 text-lg font-semibold text-white shadow-xl transition hover:scale-[1.02]"
             >
+
+              <Send size={20} />
+
               प्रतिक्रिया भेजें
+
             </button>
 
           </form>
+
+          {/* Bottom */}
+
+          <div className="mt-8 rounded-2xl bg-green-50 p-5">
+
+            <div className="flex items-center gap-3 text-green-700">
+
+              <ShieldCheck size={22} />
+
+              <span className="font-medium">
+                आपकी व्यक्तिगत जानकारी पूरी तरह सुरक्षित रखी जाएगी।
+              </span>
+
+            </div>
+
+          </div>
 
         </div>
 
