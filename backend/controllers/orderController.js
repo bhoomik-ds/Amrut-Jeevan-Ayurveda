@@ -4,7 +4,7 @@ import Order from "../models/Order.js";
 // ============================
 // Create New Order
 // ============================
-eexport const createOrder = async (req, res) => {
+export const createOrder = async (req, res) => {
   try {
     const { name, phone, city } = req.body;
 
