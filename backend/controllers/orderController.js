@@ -35,8 +35,12 @@ export const createOrder = async (req, res) => {
 
       console.log("✅ Order sent to Google Sheets");
     } catch (sheetError) {
-      console.error("Google Sheets Error:", sheetError.message);
-    }
+  console.error("========== GOOGLE SHEETS ERROR ==========");
+  console.error(sheetError.response?.data);
+  console.error(sheetError.response?.status);
+  console.error(sheetError.message);
+  console.error("=========================================");
+}
 
     res.status(201).json({
       success: true,
